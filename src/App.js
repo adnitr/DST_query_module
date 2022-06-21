@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import {BrowserRouter as Router,Switch,Route,Redirect,}from "react-router-dom";
+import home from "./components/home";
+import querypage from "./components/querypage";
+import department1 from "./components/DEPARTMENTS/department_1";
+import department2 from "./components/DEPARTMENTS/department_2";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+    <>
+      <Router forceRefresh={true}>
+        <Switch>
+          <Route exact path="/" component ={home}/>
+          <Route exact path="/querypage" component={querypage}/>
+          <Route exact path="/querypage/department_1" component={department1}/>
+          <Route exact path="/querypage/department_2" component={department2}/>
+          <Redirect to ="/"/>
+        </Switch>
+      </Router >
+    </>
+    );
 }
-
 export default App;
